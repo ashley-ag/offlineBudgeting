@@ -10,10 +10,9 @@ indexDB.onupgradeneeded = ({ target }) => {
   db.createObjectStore("pending", { autoIncrement: true });
 };
 
-
-// TO DO:
-// .onerror event for index DB console log what happened
-
+indexDB.onerror = ({ target }) => {
+  console.log(error);
+};
 
 // save transaction to pending
 function saveRecord(record) {
@@ -36,4 +35,4 @@ function saveRecord(record) {
   // // body = result (result is an array of pending objects / a property of storedData)
   // // if = 0 there is nothing in indexDB
   /////// using .getAll = let storedData = { result: [] };
-  // if transactions were successfully posted, clear objectStore by using .clear() (or similar) to clear storage  
+  // if transactions were successfully posted, clear objectStore by using .clear() (or similar) to clear storage
